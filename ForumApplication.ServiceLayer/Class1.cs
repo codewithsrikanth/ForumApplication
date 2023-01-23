@@ -8,5 +8,6 @@ namespace ForumApplication.ServiceLayer
 {
     public class Class1
     {
+        public int UserID { get; set; }
     }
 }
