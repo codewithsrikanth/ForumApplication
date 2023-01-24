@@ -89,6 +89,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Images\avatar.png" />
+    <Content Include="Images\down-color.png" />
+    <Content Include="Images\down-empty.png" />
+    <Content Include="Images\map.svg" />
+    <Content Include="Images\up-color.png" />
+    <Content Include="Images\up-empty.png" />
+    <Content Include="Images\user.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
