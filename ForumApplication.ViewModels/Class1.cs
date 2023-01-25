@@ -8,6 +8,5 @@ namespace ForumApplication.ViewModels
 {
     public class Class1
     {
-        public int Eno { get; set; }
     }
 }
