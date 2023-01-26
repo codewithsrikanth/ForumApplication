@@ -1,5 +1,6 @@
 ﻿using ForumApplication.DataModels;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ForumApplication.Repositories
 {
@@ -11,31 +12,41 @@ namespace ForumApplication.Repositories
         List<Category> GetCategories();
         Category GetCategoryByCategoryID(int categoryId);
     }
-    public class CategoryRepository
-    {
+    public class CategoryRepository:ICategoryRepository
+    {        
+        private ForumAppDbContext _dbContext;
+        public CategoryRepository()
+        {
+            _dbContext = new ForumAppDbContext();
+        }
+
         public void DeleteCategory(int cid)
         {
-            throw new System.NotImplementedException();
+            var category = _dbContext.Categories.Find(cid);
+            _dbContext.Categories.Remove(category);
+            _dbContext.SaveChanges();
         }
 
         public List<Category> GetCategories()
         {
-            throw new System.NotImplementedException();
+            return _dbContext.Categories.ToList();
         }
 
         public Category GetCategoryByCategoryID(int categoryId)
         {
-            throw new System.NotImplementedException();
+            return _dbContext.Categories.Find(categoryId);
         }
 
         public void InsertCategory(Category c)
         {
-            throw new System.NotImplementedException();
+            _dbContext.Categories.Add(c);
+            _dbContext.SaveChanges();
         }
 
         public void UpdateCategory(Category c)
         {
-            throw new System.NotImplementedException();
+            _dbContext.Entry(c).State = System.Data.Entity.EntityState.Modified;
+            _dbContext.SaveChanges();
         }
     }
 }
