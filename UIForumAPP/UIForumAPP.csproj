@@ -120,6 +120,16 @@
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ForumApplication.ServiceLayer\ForumApplication.ServiceLayer.csproj">
+      <Project>{84e1b2ba-98fa-486f-91a6-15d88b0969b1}</Project>
+      <Name>ForumApplication.ServiceLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ForumApplication.ViewModels\ForumApplication.ViewModels.csproj">
+      <Project>{78209611-6d43-46d8-9065-5130f7daadb9}</Project>
+      <Name>ForumApplication.ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
