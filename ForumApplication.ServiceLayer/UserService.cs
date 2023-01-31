@@ -3,6 +3,7 @@ using ForumApplication.DataModels;
 using ForumApplication.Repositories;
 using ForumApplication.ViewModels;
 using System.Collections.Generic;
+using System.Data.Common;
 
 namespace ForumApplication.ServiceLayer
 {
@@ -26,22 +27,46 @@ namespace ForumApplication.ServiceLayer
 
         public void DeleteUser(int uid)
         {
-            throw new System.NotImplementedException();
+            _ur.DeleteUser(uid);
         }
 
         public UserViewModel GetUserByEmail(string email)
         {
-            throw new System.NotImplementedException();
+            User u = _ur.GetUserByEmail(email);
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<User, UserViewModel>();
+                cfg.IgnoreUnmapped();
+            });
+            var mapper = config.CreateMapper();
+            UserViewModel uvm =  mapper.Map<User, UserViewModel>(u);
+            return uvm;
         }
 
         public UserViewModel GetUserByEmailAndPassword(string email, string password)
         {
-            throw new System.NotImplementedException();
+            User u =  _ur.GetUserByEmailAndPassword(email, password);
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<User, UserViewModel>();
+                cfg.IgnoreUnmapped();
+            });
+            IMapper mapper = config.CreateMapper();
+            UserViewModel uvm = mapper.Map<User, UserViewModel>(u);
+            return uvm;
         }
 
         public List<UserViewModel> GetUsers()
         {
-            throw new System.NotImplementedException();
+            List<User> u =  _ur.GetUsers();
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<User, UserViewModel>();
+                cfg.IgnoreUnmapped();
+            });
+            IMapper mapper = config.CreateMapper();
+            List<UserViewModel> users = mapper.Map<List<User>, List<UserViewModel>>(u);
+            return users;
         }
 
         public int InsertUser(RegisterViewModel uvm)
@@ -70,7 +95,14 @@ namespace ForumApplication.ServiceLayer
 
         public void UpdateUserPassword(EditUserPasswordViewModel uvm)
         {
-            throw new System.NotImplementedException();
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<EditUserPasswordViewModel, User>();
+                cfg.IgnoreUnmapped();
+            });
+            IMapper mapper = config.CreateMapper();
+            User u = mapper.Map<EditUserPasswordViewModel, User>(uvm);
+            _ur.UpdateUserPassword(u);
         }
     }
 }
