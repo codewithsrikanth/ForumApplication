@@ -1,9 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using System.Web.Optimization;
 using System.Web.Routing;
+using UIForumAPP.App_Start;
 
 namespace UIForumAPP
 {
@@ -13,6 +11,9 @@ namespace UIForumAPP
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            
+            //Step-4
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
 }
