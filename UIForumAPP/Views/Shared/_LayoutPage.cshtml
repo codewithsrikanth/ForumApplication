@@ -1,0 +1,74 @@
+﻿@using System.Web.Optimization
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Forum Application</title>
+    <meta charset="utf-8" />
+    @Styles.Render("~/Styles/bootstrap")
+    @Styles.Render("~/Styles/MyStyles")
+    @Scripts.Render("~/Scripts/bootstrap")
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Forum App</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/Home/Index">
+                                Home
+                                <span class="visually-hidden">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/About">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/Contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Home/Blogs">Blogs</a>
+                        </li>
+                        @if (Session["CurrentUserName"] != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="Account/Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="Account/Register">Register</a>
+                            </li>
+                        }
+                        @if (Session["CurrentUserName"] == null)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle hide" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">
+                                    <img src="~/Images/user.png" width="20px" />
+                                </a>
+                                <div class="dropdown-menu show" data-bs-popper="static">
+                                    <a class="dropdown-item" href="/Account/ChangeProfile">Change Profile</a>
+                                    <a class="dropdown-item" href="/Account/ChangePassword">Change Password</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/Account/Logout">Logout</a>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-sm-2" type="search" placeholder="Search">
+                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <div>
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>
