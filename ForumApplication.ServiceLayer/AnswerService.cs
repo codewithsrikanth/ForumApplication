@@ -13,7 +13,36 @@ namespace ForumApplication.ServiceLayer
         List<AnswerViewModel> GetAnswersByQuestionID(int qid);
         List<AnswerViewModel> GetAnswersByAnswerID(int aid);
     }
-    public class AnswerService
+    public class AnswerService : IAnswerService
     {
+        public void DeleteAnswer(int aid)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public List<AnswerViewModel> GetAnswersByAnswerID(int aid)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public List<AnswerViewModel> GetAnswersByQuestionID(int qid)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void InsertAnswer(AnswerViewModel a)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void UpdateAnswer(EditAnswerViewModel a)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void UpdateAnswerVotesCount(int aid, int uid, int value)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

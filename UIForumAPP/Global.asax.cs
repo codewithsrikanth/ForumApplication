@@ -11,7 +11,7 @@ namespace UIForumAPP
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            
+            UnityConfig.RegisterComponents();
             //Step-4
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
